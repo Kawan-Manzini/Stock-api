@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { IRepository } from "../iRepository";
-import { HydauliclMaterial } from "src/1.Domain/Entities/hydraulicMaterial";
+import { HydraulicMaterial } from "src/1.Domain/Entities/hydraulicMaterial";
 
-export interface IHydraulicMaterial extends IRepository<HydauliclMaterial>{ // SOLID-ISP  Interface Segregation Principle (ISP)
+export interface IHydraulicMaterial extends IRepository<HydraulicMaterial>{ // SOLID-ISP  Interface Segregation Principle (ISP)
   
 }

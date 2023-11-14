@@ -4,7 +4,7 @@ import { ChemicallMaterialValidator } from '../Validators/ChemicallMaterialValid
 import { Validate } from 'class-validator';
 
 @Entity()
-export class ChemicallMaterial extends BaseEntity {
+export class ChemicalMaterial extends BaseEntity {
 
 
     @Column()

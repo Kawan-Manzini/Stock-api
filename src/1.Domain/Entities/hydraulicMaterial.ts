@@ -5,7 +5,7 @@ import { Validate } from 'class-validator';
 import { HydraulicMaterialValidator } from '../Validators/HydraulicMaterialValidator ';
 
 @Entity()
-export class HydauliclMaterial extends Base {
+export class HydraulicMaterial extends Base {
 
     @Column()
     @Validate(HydraulicMaterialValidator)
