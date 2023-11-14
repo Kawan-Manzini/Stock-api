@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
-import { Entity, Column, BaseEntity } from 'typeorm';
+import { Entity, Column } from 'typeorm';
 import { ChemicallMaterialValidator } from '../Validators/ChemicallMaterialValidator ';
 import { Validate } from 'class-validator';
+import { Base } from './entity';
 
-@Entity()
-export class ChemicalMaterial extends BaseEntity {
+@Entity("chemical_material")
+export class ChemicalMaterial extends Base {
 
 
     @Column()

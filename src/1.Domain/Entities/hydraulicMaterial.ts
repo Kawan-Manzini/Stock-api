@@ -4,7 +4,7 @@ import { Base } from './entity';
 import { Validate } from 'class-validator';
 import { HydraulicMaterialValidator } from '../Validators/HydraulicMaterialValidator ';
 
-@Entity()
+@Entity("hydraulic_materials")
 export class HydraulicMaterial extends Base {
 
     @Column()

@@ -2,10 +2,11 @@
 import { Entity, Column } from 'typeorm';
 import { EletricalMaterialValidator } from '../Validators/EletricalMaterialValidator ';
 
+
 import { Base } from './entity';
 import { Validate } from 'class-validator';
 
-@Entity()
+@Entity("eletrical_materials")
 export class ElectricalMaterial extends Base {
 
     @Column()
