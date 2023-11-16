@@ -700,6 +700,13 @@
     semver "^7.3.5"
     tar "^6.1.11"
 
+"@nartc/automapper@^7.0.4":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@nartc/automapper/-/automapper-7.0.4.tgz#7a7336b7023e882ce0641e54199dd5c3e8a5797f"
+  integrity sha512-0Qax/6nmFuoi66UPVXWayN7DCpR/0UB9MxT3sWHdJEd6ZsbW+IYvs2lpPOg2ypTrWHNzJJqW7cFM+G3eILx7dg==
+  dependencies:
+    lodash.set "4.3.2"
+
 "@nestjs/cli@^10.0.0":
   version "10.2.1"
   resolved "https://registry.yarnpkg.com/@nestjs/cli/-/cli-10.2.1.tgz#a1d32c28e188f0fb4c3f54235c55745de4c6dd7f"
@@ -3923,6 +3930,11 @@ lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
+
+lodash.set@4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
+  integrity sha512-4hNPN5jlm/N/HLMCO43v8BXKq9Z7QdAGc/VGrRD61w8gN9g/6jF9A4L1pbUgBLCffi0w9VsXfTOij5x8iTyFvg==
 
 lodash@^4.17.21:
   version "4.17.21"
