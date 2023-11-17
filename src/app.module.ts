@@ -6,6 +6,7 @@ import { ApplicationDbContext } from './2.Infra/Data/ApplicationDbContext';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ChemicalMaterialController } from './4.Services/Controllers/ChemicalMaterial.controller';
+import { ChemicalMaterialService } from './3.Application/Services/ChemicalMaterial.service';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { ChemicalMaterialController } from './4.Services/Controllers/ChemicalMat
     ]),
   ],
   controllers: [ChemicalMaterialController],
-  providers: [ApplicationDbContext],
+  providers: [ApplicationDbContext,ChemicalMaterialService],
   exports: [ApplicationDbContext],
 })
 export class AppModule {}

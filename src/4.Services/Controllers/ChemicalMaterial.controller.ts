@@ -18,7 +18,7 @@ export class ChemicalMaterialController {
     return await this.chemicalMaterialService.getById(id);
   }
 
-  @Post()
+  @Post('create')
   async add(@Body() vm: ChemicalMaterialViewModel): Promise<ValidationError | null> {
     return await this.chemicalMaterialService.add(vm);
   }

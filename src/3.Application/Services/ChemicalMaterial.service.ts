@@ -15,20 +15,31 @@ export class ChemicalMaterialService implements IChemicalMaterialAppService {
   ) {}
 
   async getAll(): Promise<ChemicalMaterialViewModel[]> {
-    const chemicalMaterials = await this.chemicalMaterialRepository.find();
-    return chemicalMaterials.map(this.mapToViewModel);
+    try {
+      const chemicalMaterials = await this.chemicalMaterialRepository.find();
+      return chemicalMaterials.map(this.mapToViewModel);
+    } catch (error) {
+      return []; 
+    }
   }
 
   async getById(id: string): Promise<ChemicalMaterialViewModel | null> {
-    const chemicalMaterial = await this.chemicalMaterialRepository.findOne({where: {id}});
-    return chemicalMaterial ? this.mapToViewModel(chemicalMaterial) : null;
-}
+    try {
+      const chemicalMaterial = await this.chemicalMaterialRepository.findOne({where: {id : id}});
+      return chemicalMaterial ? this.mapToViewModel(chemicalMaterial) : null;
+    } catch (error) {
+      return null;
+    }
+  }
 
-
-async getAllBy(exp: (viewModel: ChemicalMaterialViewModel) => boolean): Promise<ChemicalMaterialViewModel[]> {
-  const chemicalMaterials = await this.chemicalMaterialRepository.find();
-  return chemicalMaterials.map(this.mapToViewModel).filter(exp);
-}
+  async getAllBy(exp: (viewModel: ChemicalMaterialViewModel) => boolean): Promise<ChemicalMaterialViewModel[]> {
+    try {
+      const chemicalMaterials = await this.chemicalMaterialRepository.find();
+      return chemicalMaterials.map(this.mapToViewModel).filter(exp);
+    } catch (error) {
+      return [];
+    }
+  }
 
   async add(vm: ChemicalMaterialViewModel): Promise<ValidationError | null> {
     try {
@@ -36,7 +47,6 @@ async getAllBy(exp: (viewModel: ChemicalMaterialViewModel) => boolean): Promise<
       await this.chemicalMaterialRepository.save(chemicalMaterial);
       return null;
     } catch (error) {
-      // Trate erros de validação ou outros erros de banco de dados aqui
       return error;
     }
   }
@@ -44,24 +54,23 @@ async getAllBy(exp: (viewModel: ChemicalMaterialViewModel) => boolean): Promise<
   async update(vm: ChemicalMaterialViewModel): Promise<ValidationError | null> {
     try {
       const existingChemicalMaterial = await this.chemicalMaterialRepository.findOne({ where: { id: vm.id } });
-  
+
       if (!existingChemicalMaterial) {
         throw new NotFoundException("Chemical material not found");
       }
-  
+
       this.chemicalMaterialRepository.merge(existingChemicalMaterial, vm);
       await this.chemicalMaterialRepository.save(existingChemicalMaterial);
-  
+
       return null;
     } catch (error) {
-      // Handle validation errors or other database errors here
       return error;
     }
   }
 
   async remove(id: string): Promise<ValidationError | null> {
     try {
-      const existingChemicalMaterial = await this.chemicalMaterialRepository.findOne({where: {id}});
+      const existingChemicalMaterial = await this.chemicalMaterialRepository.findOne({ where: { id } });
 
       if (!existingChemicalMaterial) {
         throw new NotFoundException("Chemical material not found");
@@ -70,7 +79,6 @@ async getAllBy(exp: (viewModel: ChemicalMaterialViewModel) => boolean): Promise<
       await this.chemicalMaterialRepository.remove(existingChemicalMaterial);
       return null;
     } catch (error) {
-      // Trate erros de validação ou outros erros de banco de dados aqui
       return error;
     }
   }
