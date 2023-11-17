@@ -32,6 +32,15 @@ export class ChemicalMaterialService implements IChemicalMaterialAppService {
     }
   }
 
+  async getByProvider(supplier: string): Promise<ChemicalMaterialViewModel[] | null> {
+    try {
+      const chemicalMaterials = await this.chemicalMaterialRepository.find({where: {supplier : supplier}});
+      return chemicalMaterials.map(this.mapToViewModel)
+    } catch (error) {
+      return null;
+    }
+  }
+
   async getAllBy(exp: (viewModel: ChemicalMaterialViewModel) => boolean): Promise<ChemicalMaterialViewModel[]> {
     try {
       const chemicalMaterials = await this.chemicalMaterialRepository.find();
@@ -83,7 +92,7 @@ export class ChemicalMaterialService implements IChemicalMaterialAppService {
     }
   }
 
-  private mapToViewModel(entity: ChemicalMaterial): ChemicalMaterialViewModel {
+  public mapToViewModel(entity: ChemicalMaterial): ChemicalMaterialViewModel {
     return {
       id: entity.id,
       name: entity.name,

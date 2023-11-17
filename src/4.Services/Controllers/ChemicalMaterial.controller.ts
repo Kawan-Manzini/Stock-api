@@ -17,6 +17,11 @@ export class ChemicalMaterialController {
   async getById(@Param('id') id: string): Promise<ChemicalMaterialViewModel | null> {
     return await this.chemicalMaterialService.getById(id);
   }
+  
+  @Get('supplier/:supplier') // Alteração na rota para evitar conflito
+  async getByProvider(@Param('supplier') supplier: string): Promise<ChemicalMaterialViewModel[] | null> {
+    return await this.chemicalMaterialService.getByProvider(supplier);
+  }
 
   @Post('create')
   async add(@Body() vm: ChemicalMaterialViewModel): Promise<ValidationError | null> {
